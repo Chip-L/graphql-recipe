@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Recipe.belongsTo(models.User, { foreignKey: "userId" });
+      // *Note:* userId for Sequelize would normally be UserId - foreignKey is renaming it to "userId" because that is how we set it up in migrations
     }
   }
   Recipe.init(
