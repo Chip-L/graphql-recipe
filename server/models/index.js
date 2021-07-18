@@ -41,6 +41,11 @@ fs.readdirSync(__dirname)
 // sets up the association of each model? Not sure if this is still needed:
 // https://github.com/sequelize/express-example/issues/95
 // https://github.com/sequelize/express-example/issues/106
+
+// This calls the associate function from each model and sets up the associations as described in there. In class, we did this as part of the index.js file (raw) here we do it in each model:
+// user.js: ...associate(models) { User.hasMany(models.Recipe); }
+// recipe.js: ...associate(models) { Recipe.belongsTo(models.User, { foreignKey: "userId" }); }
+// *Note:* userId for Sequelize would normally be UserId - foreignKey is renaming it to "userId" because that is how we set it up in migrations
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
