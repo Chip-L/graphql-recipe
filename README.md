@@ -1,4 +1,4 @@
-"# GraphQL Recipe
+# GraphQL Recipe
 
 ## Description
 
