@@ -1,10 +1,9 @@
 "use strict";
 
 // imports for config
-require("dotenv").config();
 const Sequelize = require("sequelize");
 const env = process.env.NODE_ENV || "development"; // set in .env or as part of the nodejs environment
-const config = require(__dirname + "/../config/config.json")[env];
+const config = require(__dirname + "/../config/config.js")[env];
 
 // imports to set up the db
 const fs = require("fs");
@@ -20,8 +19,8 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(
     config.database,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
+    config.username,
+    config.password,
     config
   );
 }
