@@ -17,11 +17,14 @@ const resolvers = {
 
   Mutation: {
     async createUser(root, { name, email, password }, { models }) {
-      return models.User.create({
+      console.log("you have reached createUser");
+      const newUser = await models.User.create({
         name,
         email,
         password: await bcrypt.hash(password, 10),
       });
+      console.log(newUser);
+      return newUser;
     },
 
     async createRecipe(
@@ -47,3 +50,5 @@ const resolvers = {
     },
   },
 };
+
+module.exports = resolvers;
