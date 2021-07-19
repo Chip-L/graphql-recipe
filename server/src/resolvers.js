@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 
 const resolvers = {
   Query: {
-    async UserInputError(root, { id }, { models }) {
+    async user(root, { id }, { models }) {
       return models.User.findByPk(id);
     },
 
@@ -17,13 +17,13 @@ const resolvers = {
 
   Mutation: {
     async createUser(root, { name, email, password }, { models }) {
-      console.log("you have reached createUser");
+      // console.log("you have reached createUser");
       const newUser = await models.User.create({
         name,
         email,
         password: await bcrypt.hash(password, 10),
       });
-      console.log(newUser);
+      // console.log(newUser);
       return newUser;
     },
 
