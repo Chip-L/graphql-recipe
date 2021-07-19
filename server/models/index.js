@@ -23,6 +23,17 @@ if (config.use_env_variable) {
   );
 }
 
+// Test DB Connection
+console.log("sequelize:", sequelize);
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
+
 // *I think* this is reading all of the files n this directory and adding each one as a model to the 'db' object
 fs.readdirSync(__dirname)
   .filter((file) => {
