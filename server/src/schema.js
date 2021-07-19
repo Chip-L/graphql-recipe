@@ -10,6 +10,7 @@ const typeDefs = gql`
 
   type Recipe {
     id: Int!
+    title: String!
     ingredients: String!
     direction: String!
     user: User!
@@ -18,7 +19,7 @@ const typeDefs = gql`
   type Query {
     user(id: Int!): User
     allRecipes: [Recipe!]!
-    recipe(id: INt!): Recipe
+    recipe(id: Int!): Recipe
   }
 
   type Mutation {
