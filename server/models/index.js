@@ -24,7 +24,6 @@ if (config.use_env_variable) {
 }
 
 // Test DB Connection
-console.log("sequelize:", sequelize);
 sequelize
   .authenticate()
   .then(() => {
