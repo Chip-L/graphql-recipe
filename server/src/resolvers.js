@@ -1,22 +1,23 @@
 const bcrypt = require("bcryptjs");
+const models = require("../models");
 
 const resolvers = {
   Query: {
-    async user(root, { id }, { models }) {
+    async user(root, { id }) {
       return models.User.findByPk(id);
     },
 
-    async allRecipes(root, args, { models }) {
+    async allRecipes(root, args) {
       return models.Recipe.findAll();
     },
 
-    async recipe(root, { id }, { models }) {
+    async recipe(root, { id }) {
       return models.Recipe.findByPk(id);
     },
   },
 
   Mutation: {
-    async createUser(root, { name, email, password }, { models }) {
+    async createUser(root, { name, email, password }) {
       // console.log("you have reached createUser");
       const newUser = await models.User.create({
         name,
@@ -27,11 +28,7 @@ const resolvers = {
       return newUser;
     },
 
-    async createRecipe(
-      root,
-      { userId, title, ingredients, direction },
-      { models }
-    ) {
+    async createRecipe(root, { userId, title, ingredients, direction }) {
       return models.Recipe.create({ userId, title, ingredients, direction });
     },
   },
