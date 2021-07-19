@@ -5,7 +5,7 @@ const typeDefs = gql`
     id: Int!
     name: String!
     email: String!
-    recipes: [Recipe!]!
+    recipes: [Recipe!]
   }
 
   type Recipe {
